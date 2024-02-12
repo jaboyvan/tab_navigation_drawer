@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'screens/home_screen.dart';
-import 'screens/favorite_screen.dart';
 import 'screens/settings_screen.dart';
+import 'screens/profile_screen.dart';
+import 'screens/notifications_screen.dart';
+import 'screens/calculator_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
   }
 
   @override
@@ -69,8 +71,8 @@ class _MyHomePageState extends State<MyHomePage>
                 },
               ),
               ListTile(
-                leading: Icon(Icons.favorite),
-                title: Text('Favorites'),
+                leading: Icon(Icons.calculate),
+                title: Text('Calculator'),
                 onTap: () {
                   _tabController.animateTo(1);
                   Navigator.pop(context);
@@ -84,6 +86,22 @@ class _MyHomePageState extends State<MyHomePage>
                   Navigator.pop(context);
                 },
               ),
+              ListTile(
+                leading: Icon(Icons.person),
+                title: Text('Profile'),
+                onTap: () {
+                  _tabController.animateTo(3);
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.notifications),
+                title: Text('Notifications'),
+                onTap: () {
+                  _tabController.animateTo(4);
+                  Navigator.pop(context);
+                },
+              ),
             ],
           ),
         ),
@@ -91,8 +109,10 @@ class _MyHomePageState extends State<MyHomePage>
           controller: _tabController,
           children: [
             HomeScreen(),
-            FavoriteScreen(),
+            CalculatorScreen(),
             SettingsScreen(),
+            ProfileScreen(),
+            NotificationsScreen(),
           ],
         ),
         bottomNavigationBar: Material(
@@ -105,12 +125,20 @@ class _MyHomePageState extends State<MyHomePage>
                 text: 'Home',
               ),
               Tab(
-                icon: Icon(Icons.favorite),
-                text: 'Favorites',
+                icon: Icon(Icons.calculate),
+                text: 'Calculator',
               ),
               Tab(
                 icon: Icon(Icons.settings),
                 text: 'Settings',
+              ),
+              Tab(
+                icon: Icon(Icons.person),
+                text: 'Profile',
+              ),
+              Tab(
+                icon: Icon(Icons.notifications),
+                text: 'Notifications',
               ),
             ],
           ),
